@@ -1,0 +1,31 @@
+<% include partials/header %>
+
+    <h1>Available Channels</h1>
+    <div id="channel-form">
+        <div>
+            <input id="chan-name" type="text" name="channelName" placeholder="channel name" />
+            <button id="chan-btn" class="lnk-btn">Create</button>
+            <span id="chan-note">Channel name: a-Z, 0-9, [-_] (2-15 char)</span>
+            <input id="pass-check" type="checkbox" name="pass-check" />
+            <label id="check-mod" for="pass-check" name="check-mod"></label>
+            <label for="check-mod"><span id="check-mod"></span>Enable Password</label>
+            <br />
+            <input id="chan-pass" type="password" name="password" placeholder="channel password" />
+            <span id="chan-pass-note">Password: a-Z, 0-9, [-_] (1-32 char)</span>
+        </div>
+    </div>
+    <div id="channel-list-block">
+        <span id="channel-count">Channels: <%- channels.length %></span>
+        <ul id="channel-list">
+            <% for(var i = 0; i < channels.length; i++) { %>
+                <li id="channel-<%- channels[i]._id %>" class="channel-block">
+                    <a href="/channel/<%- channels[i].id %>">
+                        <span class="channel-name"><%- channels[i].channelName %></span>
+                        <span class="channel-users">Users: <span class="channel-users-num"><%- channels[i].connections.length %></span></span>
+                    </a>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+
+<% include partials/footer %>

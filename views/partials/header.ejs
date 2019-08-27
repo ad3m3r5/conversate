@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Conversate | <%- title %></title>
+
+        <meta name="description" content="Conversate - NodeJS Chat application">
+        <meta name="keywords" content="Conversate, NodeJS, Express, MongoDB, Chat, Conversate">
+        <meta name="author" content="ad3m3r5 - aarondemers.com">
+
+        <!-- Icon made by smashicons from www.flaticon.com - attributed here since icon not displayed on site page -->
+        <!-- https://www.flaticon.com/authors/smashicons -->
+        <!-- https://www.flaticon.com/free-icon/chat_134808 -->
+        <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500&display=swap" rel="stylesheet">
+        <!-- Font Awesome 4.7 -->
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body>
+        <div id="whitespace">&nbsp;</div>
+        <noscript>
+            You must enable JavaScript to use this application. Please update your browser or enable JavaScript.
+        </noscript>
+
+        <header>
+            <nav>
+                <div id="nav-brand">
+                    <h3><a href="/">Conversate</a></h3>
+                </div>
+                <div id="nav-links">
+                    <ul>
+                        <% if(!user) { %>
+                        <li><a href="/login" id="log-btn" class="lnk-btn">Login</a></li>
+                        <li><a href="/register" id="reg-btn" class="lnk-btn">Register</a></li>
+                        <% } else if (user) { %>
+                        <li id="username"><a id="user-link" href="/profile"><%- user.username %></a></li>
+                        <li><a href="/logout" id="out-btn" class="lnk-btn">Logout</a></li>
+                        <% } %>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <div id="page-content">
+
+        <% if(typeof errMsg !== 'undefined' && errMsg && errMsg.length > 0) { %>
+            <br />
+            <div id="errmsgblk" class="msgblk">
+                <span id="msg"><%- errMsg %></span>
+            </div>
+            <br />
+        <% } %>
+        <% if(typeof othMsg !== 'undefined' && othMsg && othMsg.length > 0) { %>
+            <br />
+            <div id="othmsgblk" class="msgblk">
+                <span id="msg"><%- othMsg %></span>
+            </div>
+            <br />
+        <% } %>

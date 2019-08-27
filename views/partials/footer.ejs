@@ -1,0 +1,26 @@
+        </div>
+
+        <div id="footer-ws">&nbsp;</div>
+        <footer>
+            <p>Conversate by Ad3m3r5 - <a href="https://github.com/ad3m3r5" target="_blank"><i id="github-icon" class="fa fa-github" aria-hidden="true"></i></a></p>
+        </footer>
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous">
+        </script>
+        <% if(title == 'Home') { %>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/js/conversate.min.js"></script>
+        <script>$(function(){app.home()})</script>
+        <% } %>
+        <% if(typeof channel !== 'undefined' && channel) { %>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/js/conversate.min.js"></script>
+        <script>$(function(){app.channel('<%- channel.id %>', '<%- user.username %>')})</script>
+        <% } %>
+        <% if(title == 'Profile') { %><script src="/js/prof.min.js"></script><% } %>
+        <% if(title == 'Profile' && user.username == 'admin') { %><script src="/js/profAdmin.min.js"></script><% } %>
+        <% if(title == 'Register') { %><script src="/js/logreg.min.js"></script><% } %>
+    </body>
+</html>

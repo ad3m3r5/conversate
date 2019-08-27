@@ -1,0 +1,43 @@
+<% include partials/header %>
+
+    <h1><%- channel.channelName %></h1>
+    <span id="user-count"><%- channel.connections.length %> User(s) Connected</span>
+    <div id="chat-box">
+        <div id="user-list-box">
+            <ul id="user-list">
+
+            </ul>
+        </div>
+        <div id="message-list-box">
+            <ul id="message-list">
+                <% for(var i = 0; i < channel.messages.length; i++) { %>
+                    <% if(channel.messages[i].username == user.username) { %>
+                        <li class="message message-own">
+                    <% } else { %>
+                        <li class="message message-oth">
+                    <% } %>
+                        <div class="message-cont"><%- channel.messages[i].username %></div>
+                        <div class="message-cont"><%- channel.messages[i].message %></div>
+                        <% if((Date.now() - channel.messages[i].sent_on) > (24*60*60*1000)) { %>
+                        <div class="message-date"><%- (new Date(channel.messages[i].sent_on)).toLocaleDateString("en-US") %></div>
+                        <% } else { %>
+                        <div class="message-date"><%- (new Date(channel.messages[i].sent_on)).toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit'}) %></div>
+                        <% } %>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+        <div id="message-box">
+            <div id="message-area">
+                <input id="message-input" name="message" autofocus />
+            </div>
+            <div id="send-area">
+                <button id="send-btn" class="lnk-btn" type="submit">Send</button>
+            </div>
+        </div>
+        <div id="char-count-box">
+            <p id="char-count"><span id="chars">400</span> char remaining</p>
+        </div>
+    </div>
+
+<% include partials/footer %>

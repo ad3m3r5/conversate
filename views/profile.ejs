@@ -1,0 +1,34 @@
+<% include partials/header %>
+
+    <h1>Profile</h1>
+    <h3>User: <%- user.username %></h3>
+    <% if(user.username !== 'admin') { %>
+    <div id="profile-user-box" class="profile-form-box">
+        <h3>Change Username</h3>
+        <form id="profile-user-form" class="profile-form" action="/changeuser" method="post">
+            <input id="new-user" class="prof-inp" type="text" name="chnguser" placeholder="New Username" />
+            <input id="ver-pass" class="prof-inp" type="password" name="chnguserpass" placeholder="Verify Password" />
+            <button id="log-btn" class="prof-btn"type="submit">Change</button>
+        </form>
+    </div>
+    <% } %>
+    <div id="profile-pass-box" class="profile-form-box">
+        <h3>Change Password</h3>
+        <form id="profile-pass-form" class="profile-form" action="/changepass" method="post">
+            <input id="old-pass" class="prof-inp" type="password" name="oldpass" placeholder="Current Password" />
+            <input id="new-pass" class="prof-inp" type="password" name="chngpass" placeholder="New Password" />
+            <input id="new-pass-ver" class="prof-inp" type="password" name="chngpassconf" placeholder="Verify Password" />
+            <button id="reg-btn" class="prof-btn" type="submit">Change</button>
+        </form>
+    </div>
+    <% if(user.username === 'admin') { %>
+    <div id="profile-admin-box" class="profile-form-box">
+        <h3>Delete Channel</h3>
+        <form id="profile-admin-form" class="profile-form" action="/delchan" method="post">
+            <input id="channel-name" class="prof-inp" type="text" name="channame" placeholder="Channel Name" />
+            <button id="out-btn" class="prof-btn" type="submit">Delete</button>
+        </form>
+    </div>
+    <% } %>
+
+<% include partials/footer %>
